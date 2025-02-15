@@ -1,5 +1,4 @@
-Shikshak Saathi
-Empowering Teachers, Transforming Classrooms
+### Shikshak Saathi - Empowering Teachers, Transforming Classrooms
 
 
 **Shikshak Saathi (शिक्षक साथी, meaning "Teacher Companion")** is a teacher effectiveness platform designed specifically for Indian schools. It leverages AI-powered feedback, gamified professional development, and actionable insights to improve teaching quality and student outcomes. By addressing the unique challenges of Indian classrooms, Shikshak Saathi ensures that teacher training programs are effectively applied, leading to better learning experiences for students.
