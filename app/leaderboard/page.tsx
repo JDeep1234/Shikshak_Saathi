@@ -3,11 +3,11 @@ import { Badge } from "@/components/ui/badge"
 import { Coins } from "lucide-react"
 
 const leaderboardData = [
-  { id: 1, name: "John Doe", coins: 120, badges: ["Quick Learner", "Engagement Expert"] },
-  { id: 2, name: "Jane Smith", coins: 115, badges: ["Tech Savvy", "Classroom Pro"] },
-  { id: 3, name: "Bob Johnson", coins: 100, badges: ["Engagement Expert"] },
-  { id: 4, name: "Alice Brown", coins: 95, badges: ["Quick Learner"] },
-  { id: 5, name: "Charlie Davis", coins: 90, badges: ["Tech Savvy"] },
+  { id: 1, name: "Akshay", coins: 120, badges: ["Quick Learner", "Engagement Expert"] },
+  { id: 2, name: "Priya", coins: 115, badges: ["Tech Savvy", "Classroom Pro"] },
+  { id: 3, name: "Aditi", coins: 100, badges: ["Engagement Expert"] },
+  { id: 4, name: "Vijay", coins: 95, badges: ["Quick Learner"] },
+  { id: 5, name: "Arjun", coins: 90, badges: ["Tech Savvy"] },
 ]
 
 export default function Leaderboard() {
