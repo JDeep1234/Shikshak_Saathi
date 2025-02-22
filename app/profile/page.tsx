@@ -9,7 +9,7 @@ export default function UserProfile() {
       <h1 className="text-3xl font-bold mb-8">User Profile</h1>
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>John Doe</CardTitle>
+          <CardTitle>Akshay</CardTitle>
           <CardDescription>Mathematics Teacher</CardDescription>
         </CardHeader>
         <CardContent>
