@@ -1,87 +1,106 @@
 "use client"
 
-import { useState } from "react"
-import { useParams } from "next/navigation"
+import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
+import { Progress } from "@/components/ui/progress"
+import { Badge } from "@/components/ui/badge"
+import { Coins } from "lucide-react"
 
-const moduleData = {
-  1: {
+const trainingModules = [
+  {
+    id: 1,
     title: "Classroom Management",
-    description: "Learn effective strategies for managing your classroom",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    quizzes: [
-      {
-        question: "What is the most effective way to handle disruptive behavior?",
-        options: [
-          "Ignore it",
-          "Immediately send the student out",
-          "Address it calmly and privately",
-          "Punish the entire class",
-        ],
-        correctAnswer: 2,
-      },
+    submodules: [
+      { id: 1, title: "Setting Expectations", completed: false },
+      { id: 2, title: "Positive Reinforcement", completed: false },
     ],
   },
+  // ... (add more modules as needed)
+]
+
+interface QuizScore {
+  moduleId: number
+  submoduleId: number
+  score: number
 }
 
-export default function ModuleDetails() {
-  const params = useParams()
-  const moduleId = params.id as string
-  const module = moduleData[moduleId as keyof typeof moduleData]
+export default function TrainingHub() {
+  const [modules, setModules] = useState(trainingModules)
+  const [quizScores, setQuizScores] = useState<QuizScore[]>([])
 
-  const [currentQuiz, setCurrentQuiz] = useState(0)
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
-  const [quizCompleted, setQuizCompleted] = useState(false)
+  useEffect(() => {
+    const storedScores = JSON.parse(localStorage.getItem("quizScores") || "[]")
+    setQuizScores(storedScores)
+  }, [])
 
-  const handleQuizSubmit = () => {
-    if (selectedAnswer === module.quizzes[currentQuiz].correctAnswer) {
-      // Handle correct answer
-      console.log("Correct answer!")
-    } else {
-      // Handle incorrect answer
-      console.log("Incorrect answer.")
-    }
-    setQuizCompleted(true)
+  const calculateProgress = (module) => {
+    const moduleScores = quizScores.filter((score) => score.moduleId === module.id)
+    const completedSubmodules = moduleScores.length
+    return (completedSubmodules / module.submodules.length) * 100
+  }
+
+  const getLatestScore = (moduleId) => {
+    const moduleScores = quizScores.filter((score) => score.moduleId === moduleId)
+    if (moduleScores.length === 0) return null
+    return moduleScores[moduleScores.length - 1].score
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">{module.title}</h1>
-      <Card className="mb-8">
-        <CardHeader>
-          <CardTitle>Module Content</CardTitle>
-          <CardDescription>{module.description}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p>{module.content}</p>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle>Quiz</CardTitle>
-          <CardDescription>Test your knowledge</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="mb-4">{module.quizzes[currentQuiz].question}</p>
-          <RadioGroup onValueChange={(value) => setSelectedAnswer(Number.parseInt(value))}>
-            {module.quizzes[currentQuiz].options.map((option, index) => (
-              <div key={index} className="flex items-center space-x-2">
-                <RadioGroupItem value={index.toString()} id={`option-${index}`} />
-                <Label htmlFor={`option-${index}`}>{option}</Label>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold">Training Hub</h1>
+        <div className="flex items-center">
+          <Coins className="mr-2" />
+          <span className="font-bold">Total Points: {quizScores.reduce((sum, score) => sum + score.score, 0)}</span>
+        </div>
+      </div>
+      <div className="grid md:grid-cols-2 gap-6">
+        {modules.map((module) => (
+          <Card key={module.id}>
+            <CardHeader>
+              <CardTitle>{module.title}</CardTitle>
+              <CardDescription>Enhance your teaching skills</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Progress value={calculateProgress(module)} className="mb-2" />
+              <p>{calculateProgress(module).toFixed(0)}% Complete</p>
+              <div className="mt-4">
+                <h4 className="font-semibold mb-2">Submodules:</h4>
+                <ul className="space-y-2">
+                  {module.submodules.map((submodule) => (
+                    <li key={submodule.id} className="flex justify-between items-center">
+                      <span>{submodule.title}</span>
+                      <Badge
+                        variant={
+                          quizScores.some((score) => score.moduleId === module.id && score.submoduleId === submodule.id)
+                            ? "default"
+                            : "secondary"
+                        }
+                      >
+                        {quizScores.some((score) => score.moduleId === module.id && score.submoduleId === submodule.id)
+                          ? "Completed"
+                          : "Not Started"}
+                      </Badge>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            ))}
-          </RadioGroup>
-        </CardContent>
-        <CardFooter>
-          <Button onClick={handleQuizSubmit} disabled={selectedAnswer === null || quizCompleted}>
-            {quizCompleted ? "Completed" : "Submit Answer"}
-          </Button>
-        </CardFooter>
-      </Card>
+              {getLatestScore(module.id) !== null && (
+                <p className="mt-4">Latest Score: {getLatestScore(module.id)} / 5</p>
+              )}
+            </CardContent>
+            <CardFooter className="flex justify-between">
+              <Button asChild>
+                <Link href={`/start-training/${module.id}`}>
+                  {calculateProgress(module) === 100 ? "Review" : "Continue"}
+                </Link>
+              </Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
     </div>
   )
 }
