@@ -1,51 +1,87 @@
-import Link from "next/link"
+"use client"
+
+import { useState } from "react"
+import { useParams } from "next/navigation"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Progress } from "@/components/ui/progress"
-import { Badge } from "@/components/ui/badge"
-import { Coins } from "lucide-react"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Label } from "@/components/ui/label"
 
-const trainingModules = [
-  { id: 1, title: "Classroom Management", progress: 75, quizzes: 3, coins: 25 },
-  { id: 2, title: "Lesson Planning", progress: 100, quizzes: 4, coins: 40 },
-  { id: 3, title: "Student Engagement", progress: 0, quizzes: 3, coins: 0 },
-  { id: 4, title: "Technology Integration", progress: 50, quizzes: 3, coins: 15 },
-]
+const moduleData = {
+  1: {
+    title: "Classroom Management",
+    description: "Learn effective strategies for managing your classroom",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    quizzes: [
+      {
+        question: "What is the most effective way to handle disruptive behavior?",
+        options: [
+          "Ignore it",
+          "Immediately send the student out",
+          "Address it calmly and privately",
+          "Punish the entire class",
+        ],
+        correctAnswer: 2,
+      },
+    ],
+  },
+}
 
-export default function TrainingHub() {
+export default function ModuleDetails() {
+  const params = useParams()
+  const moduleId = params.id as string
+  const module = moduleData[moduleId as keyof typeof moduleData]
+
+  const [currentQuiz, setCurrentQuiz] = useState(0)
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
+  const [quizCompleted, setQuizCompleted] = useState(false)
+
+  const handleQuizSubmit = () => {
+    if (selectedAnswer === module.quizzes[currentQuiz].correctAnswer) {
+      // Handle correct answer
+      console.log("Correct answer!")
+    } else {
+      // Handle incorrect answer
+      console.log("Incorrect answer.")
+    }
+    setQuizCompleted(true)
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Training Hub</h1>
-        <div className="flex items-center">
-          <Coins className="mr-2" />
-          <span className="font-bold">Total Coins: 80</span>
-        </div>
-      </div>
-      <div className="grid md:grid-cols-2 gap-6">
-        {trainingModules.map((module) => (
-          <Card key={module.id}>
-            <CardHeader>
-              <CardTitle>{module.title}</CardTitle>
-              <CardDescription>Enhance your teaching skills</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Progress value={module.progress} className="mb-2" />
-              <p>{module.progress}% Complete</p>
-              <p className="mt-2">Quizzes: {module.quizzes}</p>
-              <p>Coins earned: {module.coins}</p>
-            </CardContent>
-            <CardFooter className="flex justify-between">
-              <Badge variant={module.progress === 100 ? "default" : "secondary"}>
-                {module.progress === 100 ? "Completed" : "In Progress"}
-              </Badge>
-              <Button asChild>
-                <Link href={`/training-hub/${module.id}`}>{module.progress === 100 ? "Review" : "Continue"}</Link>
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
+      <h1 className="text-3xl font-bold mb-8">{module.title}</h1>
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle>Module Content</CardTitle>
+          <CardDescription>{module.description}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>{module.content}</p>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Quiz</CardTitle>
+          <CardDescription>Test your knowledge</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="mb-4">{module.quizzes[currentQuiz].question}</p>
+          <RadioGroup onValueChange={(value) => setSelectedAnswer(Number.parseInt(value))}>
+            {module.quizzes[currentQuiz].options.map((option, index) => (
+              <div key={index} className="flex items-center space-x-2">
+                <RadioGroupItem value={index.toString()} id={`option-${index}`} />
+                <Label htmlFor={`option-${index}`}>{option}</Label>
+              </div>
+            ))}
+          </RadioGroup>
+        </CardContent>
+        <CardFooter>
+          <Button onClick={handleQuizSubmit} disabled={selectedAnswer === null || quizCompleted}>
+            {quizCompleted ? "Completed" : "Submit Answer"}
+          </Button>
+        </CardFooter>
+      </Card>
     </div>
   )
 }
