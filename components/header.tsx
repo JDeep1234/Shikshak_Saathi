@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Translator } from "@translate-tools/core/translators/GoogleTranslator";
 
 export default function Header() {
   const [selectedLanguage, setSelectedLanguage] = useState("en");
@@ -18,23 +19,22 @@ export default function Header() {
   });
 
   useEffect(() => {
+    console.log("Selected language changed:", selectedLanguage);
+
     const translateText = async () => {
+      const translator = new Translator();
       const texts = [
         "Home", "AI Feedback", "Training Hub", "Insights", "Leaderboard", "Profile", "Start Training"
       ];
       const translatedTexts = await Promise.all(texts.map(async (text) => {
-        const res = await fetch("https://libretranslate.com/translate", {
-          method: "POST",
-          body: JSON.stringify({
-            q: text,
-            source: "auto",
-            target: selectedLanguage,
-            format: "text"
-          }),
-          headers: { "Content-Type": "application/json" }
-        });
-        const data = await res.json();
-        return data.translatedText;
+        try {
+          const translated = await translator.translate(text, "auto", selectedLanguage);
+          console.log("Translated text:", translated);
+          return translated;
+        } catch (error) {
+          console.error("Translation error:", error);
+          return text; // Fallback to the original text
+        }
       }));
 
       setTranslatedText({
