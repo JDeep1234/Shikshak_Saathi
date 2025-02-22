@@ -22,12 +22,12 @@
 ### **2. Gamified Professional Development Hub with Offline Access**  
 - **What it does:** Offers **gamified training modules** that teachers can access offline, addressing limited internet connectivity in rural areas.  
 - **Why it’s novel:** Combines **gamification** with **offline accessibility**, making professional development engaging and accessible for all teachers.  
-- **Example:** A teacher in a remote village earns a "Classroom Management Pro" badge after completing an offline training module.  
+- **Example:** A teacher in a remote village earns a "Classroom Management Pro" badge after completing a training module.  
 
 ### **3. Insights Dashboard for School Leaders and Government Officials**  
 - **What it does:** Provides **centralized dashboards** for school leaders and government officials to track teacher performance, training outcomes, and student learning trends across schools.  
 - **Why it’s novel:** Enables **data-driven decision-making** at both school and district levels, helping allocate resources effectively.  
-- **Example:** A district education officer identifies schools with low student engagement and organizes targeted training programs.  
+- **Example:** A headmaster identifies classes with low student engagement and organizes targeted training programs.  
 
 ---
 
@@ -38,8 +38,9 @@
   - Instant feedback dashboard with actionable suggestions.  
   - Integration with training modules for personalized development.  
 - **Tech Stack:**  
-  - Python (TensorFlow, PyTorch) for AI model development.  
-  - React.js for the feedback dashboard.  
+  - Gemini API for advanced feedback.
+  - Google Translate for multilingual support.  
+  - Next.js, Typescript, Tailwind CSS for the feedback dashboard.  
   - WebSocket for real-time communication.  
 
 ### **2. Gamified Professional Development Hub with Offline Access**  
@@ -49,42 +50,17 @@
   - Progress tracking and recognition system.  
 - **Tech Stack:**  
   - Node.js for backend development.  
-  - MongoDB for storing user progress and achievements.  
-  - React.js for the gamified interface.  
+  - PostgreSQL for storing user progress and achievements.  
+  - Next.js, Typescript for the gamified interface.  
 
 ### **3. Insights Dashboard for School Leaders and Government Officials**  
 - **Core Functionality:**  
   - Visualizations (charts, graphs) of teacher performance and student outcomes.  
   - Trend analysis and actionable insights.  
   - Integration with classroom feedback and training data.  
-- **Tech Stack:**  
-  - D3.js for data visualizations.  
+- **Tech Stack:**
   - PostgreSQL for storing and querying large datasets.  
-  - React.js for the dashboard interface.  
-
-
-
-
----
-
-## **Demo Plan**  
-1. **Showcase the AI-Powered Multilingual Feedback Assistant:**  
-   - Demonstrate real-time feedback in Hindi and English during a mock classroom session.  
-2. **Highlight the Gamified Professional Development Hub with Offline Access:**  
-   - Walk through the gamified interface and show how teachers earn badges offline.  
-3. **Present the Insights Dashboard for School Leaders and Government Officials:**  
-   - Display visualizations of teacher performance and student outcomes across schools.  
-
----
-
-## **Pitch Script**  
-**Problem:** Indian schools face challenges like large class sizes, limited resources, and inconsistent teacher evaluations, leading to low student outcomes despite extensive training programs.  
-
-**Solution:** TeachTrack India combines **AI-powered multilingual feedback, gamified professional development with offline access, and actionable insights** to bridge the gap between training and classroom implementation.  
-
-**Impact:** Our solution ensures that training concepts are effectively applied in the classroom, leading to **improved teacher effectiveness and student outcomes**, especially in rural and underserved areas.  
-
-**Why Us:** We’ve built a **scalable, innovative, and impactful solution** that addresses the core challenges of Indian schools.  
+  - Next.js, Typescript for the dashboard interface.  
 
 ---
 
