@@ -77,7 +77,20 @@
 | **Insights**                      | Insights Dashboard                                | Offers data-driven insights into teacher performance and student trends.              |
 | **Mobile App for Accessibility**  | Mobile-Friendly Platform                         | Ensures teachers and administrators can access the platform on mobile devices.        |
 
+
+
+
 ---
+## Frontend 
+![image](https://github.com/user-attachments/assets/4b4f0f15-2ef1-4ce2-ad2b-568dd0e2ab10)
+
+## Updated Frontend
+![image](https://github.com/user-attachments/assets/a60200c1-a968-4450-ad1d-aaed5cc4ae18)
+
+![image](https://github.com/user-attachments/assets/60b82ab1-5e0f-42a0-ad27-531ce27f9298)
+
+
+
 
 ## **Conclusion**  
 Shikshak Saathi is a scalable, innovative, and impactful solution that addresses the challenges of Indian schools. By leveraging AI, gamification, and data analytics, it ensures that teacher training programs are effectively applied in the classroom, ultimately improving student outcomes.
