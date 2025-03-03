@@ -17,7 +17,8 @@ export default function AIFeedback() {
   const [isProcessing, setIsProcessing] = useState(false)
 
   const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY)
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" })
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });  
+
 
   const handleTextSubmit = async (e) => {
     e.preventDefault()
