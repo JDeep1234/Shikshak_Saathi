@@ -4,11 +4,9 @@ import React, { useState } from "react"
 import { Button } from "@/components/ui/button"  
 import { Textarea } from "@/components/ui/textarea"  
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"  
-import { Upload, Download } from "lucide-react"  
+import { Download } from "lucide-react"  
 import { jsPDF } from "jspdf"  
 import Groq from "groq-sdk"  
-
-const { LlamaAI } = require("@meta/llama-ai")  
 
 export default function AIFeedback() {  
   const [textInput, setTextInput] = useState("")  
@@ -62,6 +60,7 @@ export default function AIFeedback() {
 
       // Step 2: Get feedback on transcription from GROQ API  
       const prompt = `Analyze the following class recording transcription and provide feedback on the conceptual clarity of the class. Focus on whether the concepts were explained clearly, logically, and in a way that students can understand. The language of the transcription is ${language}:\n\n${transcription}`  
+      
       const groqCompletion = await groq.chat.completions.create({  
         messages: [{ role: 'user', content: prompt }],  
         model: "llama-3.3-70b-versatile",  
@@ -121,7 +120,7 @@ export default function AIFeedback() {
       console.error("Error saving feedback:", error)  
     }  
   }  
-
+  
   const downloadPDF = () => {  
     const doc = new jsPDF()  
   
