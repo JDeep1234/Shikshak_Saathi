@@ -110,36 +110,90 @@
   - NLP: Hugging Face transformers for BERT
   - RAG agent: Meta-Llama-3.3 70B-Instruct and offline Ollama using MCP
 
-## **Project Structure**  
-### **1. AI-Powered Multilingual Feedback Assistant**  
-- **Core Functionality:**  
-  - Real-time speech analysis in multiple Indian languages.  
-  - Instant feedback dashboard with actionable suggestions.  
-  - Integration with training modules for personalized development.  
-- **Tech Stack:**  
-  - Gemini API for advanced feedback.
-  - Google Translate for multilingual support.  
-  - Next.js, Typescript, Tailwind CSS for the feedback dashboard.  
-  - WebSocket for real-time communication.  
 
-### **2. Gamified Professional Development Hub with Offline Access**  
-- **Core Functionality:**  
-  - Gamification elements (badges, leaderboards, rewards).  
-  - Offline access to training modules and resources.  
-  - Progress tracking and recognition system.  
-- **Tech Stack:**  
-  - Node.js for backend development.  
-  - PostgreSQL for storing user progress and achievements.  
-  - Next.js, Typescript for the gamified interface.  
 
-### **3. Insights Dashboard for School Leaders and Government Officials**  
-- **Core Functionality:**  
-  - Visualizations (charts, graphs) of teacher performance and student outcomes.  
-  - Trend analysis and actionable insights.  
-  - Integration with classroom feedback and training data.  
-- **Tech Stack:**
-  - PostgreSQL for storing and querying large datasets.  
-  - Next.js, Typescript for the dashboard interface.  
+## Project Structure
+
+### 1. AI-Powered Multilingual Feedback Assistant
+
+**Core Functionality:**
+- Real-time speech analysis in multiple Indian languages
+- Instant feedback dashboard with actionable suggestions
+- Integration with training modules for personalized development
+
+**Tech Stack:**
+- **Frontend:**
+  - React, HTML, CSS, JavaScript/TypeScript
+  - Next.js framework
+  - Tailwind CSS
+- **Backend:**
+  - Node.js (JS)
+  - Express framework
+  - REST API architecture
+- **Database:**
+  - PostgreSQL relational database
+  - Prisma ORM
+- **AI Components:**
+  - Speech-to-text: Whisper (website) and FlashlightASR-wav2letter++ (offline)
+  - Hugging Face transformers for NLP - BERT
+  - Translation APIs/models: NLLB API by Meta
+  - Gemini API for advanced feedback
+  - WebSocket for real-time communication
+
+### 2. Gamified Professional Development Hub with Offline Access
+
+**Core Functionality:**
+- Gamification elements (badges, leaderboards, rewards)
+- Offline access to training modules and resources
+- Progress tracking and recognition system
+
+**Tech Stack:**
+- **Frontend:**
+  - React, HTML, CSS, JavaScript/TypeScript
+  - Next.js framework
+  - Tailwind CSS
+- **Backend:**
+  - Node.js (JS)
+  - Express/Flask frameworks
+  - REST API architecture
+  - Electron.js for desktop/offline applications
+- **Database:**
+  - PostgreSQL relational database
+  - Prisma ORM
+- **AI Components:**
+  - Meta-Llama-3.3 70B-Instruct as RAG agent and for offline ollama using MCP
+  - PyTorch, Transformers libraries
+
+### 3. Insights Dashboard for School Leaders and Government Officials
+
+**Core Functionality:**
+- Visualizations (charts, graphs) of teacher performance and student outcomes
+- Trend analysis and actionable insights
+- Integration with classroom feedback and training data
+
+**Tech Stack:**
+- **Frontend:**
+  - React, HTML, CSS, JavaScript/TypeScript
+  - Next.js framework
+  - Tailwind CSS
+- **Backend:**
+  - Python (Flask)
+  - REST API architecture
+- **Database:**
+  - PostgreSQL for storing and querying large datasets
+  - Prisma ORM
+- **AI Components:**
+  - Sklearn, PyTorch for data analysis
+  - OpenCV, Tesseract, Llama-3.2 11B Vision for image recognition and OCR
+  - Pydub for audio analysis
+
+## Open-Source AI Libraries Integration
+- Sklearn, PyTorch, Transformers, Pydub
+- Speech-to-text APIs: Whisper (website) and FlashlightASR-wav2letter++ (offline)
+- Translation APIs/models: NLLB API by Meta
+- Image recognition and OCR: OpenCV, Tesseract, Llama-3.2 11B Vision
+- Hugging Face transformers for NLP - BERT
+- Meta-Llama-3.3 70B-Instruct as RAG agent and for offline ollama using MCP
 
 ## **Alignment with Tasks**  
 | **Task**                          | **Feature**                                      | **How It's Fulfilled**                                                                 |
