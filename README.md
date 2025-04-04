@@ -162,8 +162,7 @@
 ![image](https://github.com/user-attachments/assets/b534f1c7-1984-40d4-9421-fbe46dc74551)
 
 
-## Updated Frontend
-![Updated Frontend Design](https://github.com/user-attachments/assets/a60200c1-a968-4450-ad1d-aaed5cc4ae18)
+
 
 ## **Conclusion**  
 Shikshak Saathi is a scalable, innovative, and impactful solution that addresses the challenges of Indian schools. By leveraging AI, gamification, and data analytics, it ensures that teacher training programs are effectively applied in the classroom, ultimately improving student outcomes.
