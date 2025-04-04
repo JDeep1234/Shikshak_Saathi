@@ -210,10 +210,12 @@
 
 ## Website Home page
 
-![image](https://github.com/user-attachments/assets/e83c8d34-844c-4a32-919c-bcb2bad5c730)
+![image](https://github.com/user-attachments/assets/5e28dfa2-445a-48db-abbc-1755cae4ce3c)
+
 
 ## Offline App
-![image](https://github.com/user-attachments/assets/b534f1c7-1984-40d4-9421-fbe46dc74551)
+![image](https://github.com/user-attachments/assets/e97c0254-e508-49ad-b1db-cdcd8e545804)
+
 
 
 
