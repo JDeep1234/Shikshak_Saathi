@@ -154,8 +154,13 @@
 | **Insights**                      | Insights Dashboard                                | Offers data-driven insights into teacher performance and student trends.              |
 | **Mobile App for Accessibility**  | Mobile-Friendly Platform                         | Ensures teachers and administrators can access the platform on mobile devices.        |
 
-## Frontend 
-![Frontend Design](https://github.com/user-attachments/assets/4b4f0f15-2ef1-4ce2-ad2b-568dd0e2ab10)
+## Website Home page
+
+![image](https://github.com/user-attachments/assets/e83c8d34-844c-4a32-919c-bcb2bad5c730)
+
+## Offline App
+![image](https://github.com/user-attachments/assets/b534f1c7-1984-40d4-9421-fbe46dc74551)
+
 
 ## Updated Frontend
 ![Updated Frontend Design](https://github.com/user-attachments/assets/a60200c1-a968-4450-ad1d-aaed5cc4ae18)
