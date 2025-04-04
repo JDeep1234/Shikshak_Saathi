@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "dependencies": {
+  "dependencies": { 
      "groq-sdk": "^1.0.1",  
     "@meta/llama-ai": "^0.1.9" ,
     "@google-cloud/speech": "^6.7.0",
